@@ -1,0 +1,59 @@
+{
+  "site": {
+    "name": "Claudio Vilchis",
+    "tagline": "Mechanical Engineering and German student at the University of Arkansas. Formula SAE. SolidWorks. Aiming for motorsport engineering.",
+    "email": "",
+    "linkedin": "",
+    "github": "https://github.com/Claudiovilchis12"
+  },
+  "documents": [
+    { "label": "Resume", "file": "files/resume.pdf" },
+    { "label": "General CV", "file": "files/cv.pdf" },
+    { "label": "Portfolio", "file": "files/portfolio.pdf" }
+  ],
+  "projects": [
+    {
+      "title": "Formula SAE Chassis Rules Check",
+      "status": "Completed",
+      "date": "November 2026",
+      "tags": ["SolidWorks", "Formula SAE", "Rules compliance"],
+      "summary": "Checked the Formula SAE chassis model against Section F.6 of the 2026 rules: 24 items, 22 passed, 1 not applicable, 1 failed.",
+      "details": [
+        "Measured tube sizes, triangulation and member positions directly in the SolidWorks model.",
+        "F6.4.4 failed: the upper side impact member sits slightly outside the allowed zone (it must fit within 290 mm and 375 mm). I noted that it needs to shift at least 0.75 mm and left the dimensions and notes for the chassis team lead.",
+        "F6.4.5 passes but needs a ride height check that the lower side impact tube is at least 75 mm off the ground."
+      ],
+      "images": ["images/fsae-1.jpg", "images/fsae-2.png", "images/fsae-3.png"]
+    },
+    {
+      "title": "Balsa Wood Tower",
+      "status": "Completed",
+      "date": "October 2026",
+      "tags": ["Structures", "Teamwork"],
+      "summary": "Team-built tower under 15.0 g that held 122.5 lbs, more than three times the 40 lb minimum. It weighed 14.67 g.",
+      "details": [
+        "Challenge: placing sticks of different masses where they carry the most force.",
+        "Solution: after researching with my team, we put the heaviest sticks on the edges, where the force is greatest, and built mounting so the cross members could distribute force more efficiently."
+      ],
+      "images": ["images/balsa-tower.jpg"]
+    },
+    {
+      "title": "Formula SAE Suspension and Brakes",
+      "status": "In progress",
+      "date": "August 2026 to present",
+      "tags": ["Formula SAE", "Suspension", "Brakes"],
+      "summary": "Designing the suspension and braking systems for an FSAE competition car.",
+      "details": [],
+      "images": []
+    },
+    {
+      "title": "Remote Controlled Car",
+      "status": "In progress",
+      "date": "Summer 2026 to present",
+      "tags": ["SolidWorks", "Automotive design"],
+      "summary": "Building an RC car, starting with research on automotive concepts. I am modeling the chassis and components in SolidWorks.",
+      "details": [],
+      "images": []
+    }
+  ]
+}
