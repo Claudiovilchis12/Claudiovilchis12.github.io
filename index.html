@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claudio Vilchis | Mechanical Engineering</title>
+<meta name="description" content="Mechanical engineering projects: Formula SAE, SolidWorks and more.">
+<style>
+:root{--bg:#000;--panel:#0d0d0d;--line:#262626;--text:#f2f2f2;--muted:#9a9a9a;--accent:#e10600}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
+a{color:inherit}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header.hero{padding:96px 0 56px;border-bottom:1px solid var(--line)}
+.kicker{color:var(--accent);letter-spacing:.18em;text-transform:uppercase;font-size:.8rem;font-weight:700}
+h1{font-size:clamp(2.4rem,7vw,4.5rem);line-height:1.05;margin:.3em 0}
+.tagline{color:var(--muted);max-width:640px;font-size:1.1rem}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.btn{display:inline-block;border:1px solid var(--line);padding:10px 16px;border-radius:999px;text-decoration:none;font-size:.95rem}
+.btn:hover{border-color:var(--accent);color:#fff}
+.btn.solid{background:var(--accent);border-color:var(--accent)}
+section{padding:56px 0}
+h2{font-size:1.4rem;margin:0 0 24px;letter-spacing:.04em;text-transform:uppercase}
+h2::after{content:"";display:block;width:48px;height:3px;background:var(--accent);margin-top:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.card:hover{border-color:#444}
+.shots{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:2px;background:var(--line)}
+.shots img{width:100%;height:170px;object-fit:cover;display:block}
+.body{padding:18px}
+.meta{display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:.8rem;margin-bottom:6px}
+.status{color:var(--accent);font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.card h3{margin:0 0 8px;font-size:1.15rem}
+.card p{margin:0 0 12px;color:#cfcfcf}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.tag{border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:.75rem;color:var(--muted)}
+details summary{cursor:pointer;color:var(--accent);font-size:.9rem}
+details ul{padding-left:18px;color:#cfcfcf;font-size:.92rem}
+footer{border-top:1px solid var(--line);padding:32px 0;color:var(--muted);font-size:.85rem}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <div class="kicker">Mechanical Engineering Portfolio</div>
+  <h1 id="name">Claudio Vilchis</h1>
+  <p class="tagline" id="tagline"></p>
+  <div class="links" id="docs"></div>
+</div></header>
+<main class="wrap">
+  <section><h2>Projects</h2><div class="grid" id="projects"></div></section>
+  <section id="contact" class="hidden"><h2>Contact</h2><div class="links" id="contactLinks"></div></section>
+</main>
+<footer><div class="wrap">University of Arkansas, Mechanical Engineering and German. Updated by editing projects.json.</div></footer>
+<script>
+function el(tag, cls, text){const e=document.createElement(tag); if(cls) e.className=cls; if(text!==undefined) e.textContent=text; return e;}
+function link(label, href, solid){const a=el('a','btn'+(solid?' solid':''),label); a.href=href; if(/^https?:/.test(href)) {a.target='_blank'; a.rel='noopener';} return a;}
+fetch('projects.json').then(r=>r.json()).then(data=>{
+  const s=data.site||{};
+  document.getElementById('name').textContent=s.name||'';
+  document.getElementById('tagline').textContent=s.tagline||'';
+  const docs=document.getElementById('docs');
+  (data.documents||[]).forEach(async d=>{
+    try{const r=await fetch(d.file,{method:'HEAD'}); if(r.ok) docs.appendChild(link(d.label+' (PDF)', d.file, true));}catch(e){}
+  });
+  const grid=document.getElementById('projects');
+  (data.projects||[]).forEach(p=>{
+    const card=el('article','card');
+    const imgs=(p.images||[]);
+    if(imgs.length){
+      const shots=el('div','shots');
+      imgs.forEach(src=>{const i=el('img'); i.src=src; i.alt=p.title; i.loading='lazy'; i.onerror=()=>i.remove(); shots.appendChild(i);});
+      card.appendChild(shots);
+    }
+    const b=el('div','body');
+    const m=el('div','meta'); m.appendChild(el('span','status',p.status||'')); m.appendChild(el('span','',p.date||'')); b.appendChild(m);
+    b.appendChild(el('h3','',p.title));
+    b.appendChild(el('p','',p.summary||''));
+    const t=el('div','tags'); (p.tags||[]).forEach(x=>t.appendChild(el('span','tag',x))); b.appendChild(t);
+    if((p.details||[]).length){const d=el('details'); d.appendChild(el('summary','','Details')); const ul=el('ul'); p.details.forEach(x=>ul.appendChild(el('li','',x))); d.appendChild(ul); b.appendChild(d);}
+    card.appendChild(b); grid.appendChild(card);
+  });
+  const c=document.getElementById('contactLinks'); let any=false;
+  if(s.email){c.appendChild(link('Email','mailto:'+s.email,true)); any=true;}
+  if(s.linkedin){c.appendChild(link('LinkedIn',s.linkedin)); any=true;}
+  if(s.github){c.appendChild(link('GitHub',s.github)); any=true;}
+  if(any) document.getElementById('contact').classList.remove('hidden');
+});
+</script>
+</body>
+</html>
