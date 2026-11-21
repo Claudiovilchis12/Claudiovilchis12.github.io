@@ -23,7 +23,24 @@
         "F6.4.4 failed: the upper side impact member sits slightly outside the allowed zone (it must fit within 290 mm and 375 mm). I noted that it needs to shift at least 0.75 mm and left the dimensions and notes for the chassis team lead.",
         "F6.4.5 passes but needs a ride height check that the lower side impact tube is at least 75 mm off the ground."
       ],
-      "images": ["images/fsae-1.jpg", "images/fsae-2.png", "images/fsae-3.png"]
+      "images": ["images/fsae-1.jpg", "images/fsae-2.png", "images/fsae-3.png", "images/fsae-4.png"],
+      "links": [{ "label": "Excel: full F.6 checklist", "url": "files/FSAE_F6_Regulations.xlsx" }]
+    },
+    {
+      "title": "Water Filter Design",
+      "status": "Completed",
+      "date": "November 2026",
+      "tags": ["Prototyping", "Data-driven iteration", "Teamwork"],
+      "summary": "Team-built water filter that raised transmittance from 9.0% to 20.5% while cutting filtration time from 6:40 to 3:00 across three designs.",
+      "details": [
+        "Goal: produce low-turbidity water using simple, limited materials. Success meant a high spectrometer transmittance reading with a short filtration time.",
+        "Prototype 1: 9.0% transmittance, 6:40. Prototype 2: 10.5%, 4:50. Final design: 20.5%, 3:00.",
+        "Data showed sand was the most influential material and the drainage rock had little effect, so we kept the sand, reduced the other materials and rearranged the layers.",
+        "Final design alternated sand and pea gravel layers over a cotton round, which kept the cotton from clogging and nearly doubled transmittance (10.5% to 20.5%).",
+        "Next step: add more gravel at the bottom and compact it to reduce clogging."
+      ],
+      "images": [],
+      "links": [{ "label": "Full report (PDF)", "url": "files/water-filter-report.pdf" }]
     },
     {
       "title": "Balsa Wood Tower",
@@ -35,7 +52,8 @@
         "Challenge: placing sticks of different masses where they carry the most force.",
         "Solution: after researching with my team, we put the heaviest sticks on the edges, where the force is greatest, and built mounting so the cross members could distribute force more efficiently."
       ],
-      "images": ["images/balsa-tower.jpg"]
+      "images": ["images/balsa-tower.jpg"],
+      "links": []
     },
     {
       "title": "Formula SAE Suspension and Brakes",
@@ -44,7 +62,8 @@
       "tags": ["Formula SAE", "Suspension", "Brakes"],
       "summary": "Designing the suspension and braking systems for an FSAE competition car.",
       "details": [],
-      "images": []
+      "images": [],
+      "links": []
     },
     {
       "title": "Remote Controlled Car",
@@ -53,7 +72,8 @@
       "tags": ["SolidWorks", "Automotive design"],
       "summary": "Building an RC car, starting with research on automotive concepts. I am modeling the chassis and components in SolidWorks.",
       "details": [],
-      "images": []
+      "images": [],
+      "links": []
     }
   ]
 }
