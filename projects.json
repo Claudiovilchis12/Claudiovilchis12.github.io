@@ -46,14 +46,16 @@
       "title": "Balsa Wood Tower",
       "status": "Completed",
       "date": "October 2026",
-      "tags": ["Structures", "Teamwork"],
+      "tags": ["Structures", "Teamwork", "Weight optimization"],
       "summary": "Team-built tower under 15.0 g that held 122.5 lbs, more than three times the 40 lb minimum. It weighed 14.67 g.",
       "details": [
-        "Challenge: placing sticks of different masses where they carry the most force.",
-        "Solution: after researching with my team, we put the heaviest sticks on the edges, where the force is greatest, and built mounting so the cross members could distribute force more efficiently."
+        "Constraints: square base, under 15 in tall, no more than 12 in wide, limited materials, one tower built.",
+        "Measured 15 sticks of the same length: masses ranged from 0.52 g to 0.99 g. Used the average density to budget about 219 in of wood within the weight limit.",
+        "Placed the heaviest sticks on the edges, where force is greatest, and built the mounting so the cross members could distribute force more efficiently.",
+        "Load held was about 3,800 times the tower's own weight. We believe a cross member failed first and then caused a corner member to snap."
       ],
       "images": ["images/balsa-tower.jpg"],
-      "links": []
+      "links": [{ "label": "Full report (PDF)", "url": "files/balsa-tower-report.pdf" }]
     },
     {
       "title": "Formula SAE Suspension and Brakes",
