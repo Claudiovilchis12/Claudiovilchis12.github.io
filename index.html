@@ -60,6 +60,7 @@ fetch('projects.json').then(r=>r.json()).then(data=>{
   document.getElementById('name').textContent=s.name||'';
   document.getElementById('tagline').textContent=s.tagline||'';
   const docs=document.getElementById('docs');
+  if(s.github) docs.appendChild(link('GitHub', s.github, true));
   (data.documents||[]).forEach(async d=>{
     try{const r=await fetch(d.file,{method:'HEAD'}); if(r.ok) docs.appendChild(link(d.label+' (PDF)', d.file, true));}catch(e){}
   });
@@ -77,13 +78,13 @@ fetch('projects.json').then(r=>r.json()).then(data=>{
     b.appendChild(el('h3','',p.title));
     b.appendChild(el('p','',p.summary||''));
     const t=el('div','tags'); (p.tags||[]).forEach(x=>t.appendChild(el('span','tag',x))); b.appendChild(t);
+    if((p.links||[]).length){const L=el('div','links'); L.style.margin='0 0 12px'; p.links.forEach(x=>L.appendChild(link(x.label, x.url))); b.appendChild(L);}
     if((p.details||[]).length){const d=el('details'); d.appendChild(el('summary','','Details')); const ul=el('ul'); p.details.forEach(x=>ul.appendChild(el('li','',x))); d.appendChild(ul); b.appendChild(d);}
     card.appendChild(b); grid.appendChild(card);
   });
   const c=document.getElementById('contactLinks'); let any=false;
   if(s.email){c.appendChild(link('Email','mailto:'+s.email,true)); any=true;}
   if(s.linkedin){c.appendChild(link('LinkedIn',s.linkedin)); any=true;}
-  if(s.github){c.appendChild(link('GitHub',s.github)); any=true;}
   if(any) document.getElementById('contact').classList.remove('hidden');
 });
 </script>
